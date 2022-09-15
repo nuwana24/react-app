@@ -1,0 +1,113 @@
+body {
+  // height: 100vh;
+  background-color: rgb(224, 224, 224);
+  overflow-x: hidden;
+}
+.page-title {
+  margin: 2% 5%;
+}
+
+.page-description {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.page-description-add-button {
+  margin-left: auto;
+  margin-right: 1%;
+}
+.page-description-add-button2 {
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  display: none;
+//   opacity: 0;
+}
+.contact-table {
+  margin: 2% 5%;
+  background-color: white;
+  padding: 2%;
+
+  thead{
+    border: 1px solid rgb(209, 209, 209);
+
+    th{
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+  tbody{
+    border: 1px solid rgb(209, 209, 209);
+
+    tr{
+      border-bottom: 1px solid rgb(209, 209, 209);
+    }
+  }
+  
+}
+.contact-table-responsive {
+  display: none;
+}
+.transparent-button {
+  background-color: transparent;
+
+  img {
+    width: 20px;
+  }
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  padding: 10px;
+  border-collapse: collapse;
+  tbody {
+    tr {
+      &:hover {
+        background-color: rgb(190, 253, 222);
+      }
+    }
+    td {
+      padding: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      color: rgb(59, 59, 59);
+    }
+  }
+
+  td {
+    text-align: left;
+  }
+  th {
+    padding: 20px 10px;
+    background-color: rgb(18, 156, 6);
+    color: white;
+    text-align: left;
+  }
+}
+@media (max-width: 768px) {
+  .contact-table {
+    display: none;
+  }
+  .contact-table-responsive {
+    display: contents;
+  }
+  .page-description-add-button2 {
+    // opacity: 1;
+    display: contents;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+
+    button {
+      width: 100%;
+      position: fixed;
+      bottom: 0px;
+    }
+  }
+  table {
+    width: 90%;
+    margin: 5% 5% 5% 5%;
+    background-color: white;
+  }
+}
