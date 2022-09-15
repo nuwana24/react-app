@@ -1,0 +1,50 @@
+{
+  "contact": [
+    {
+      "id": 1,
+      "title": "Mr",
+      "firstName": "Sunimal",
+      "lastName": "Perera",
+      "altEmail": "nisdfal@gmail.com",
+      "mobileNumber": "0112953343496",
+      "email": "nuwana24@gmail.com",
+      "password": "12345678",
+      "marketingPref": "yes"
+    },
+    {
+      "id": 1,
+      "title": "Mr",
+      "firstName": "Sunimal",
+      "lastName": "Perera",
+      "altEmail": "nisdfal@gmail.com",
+      "mobileNumber": "0112953343496",
+      "email": "nuwana24@gmail.com",
+      "password": "12345678",
+      "marketingPref": "yes"
+    },
+    {
+      "id": "db2691e5-f081-42da-9094-f2461e516bcc",
+      "title": "Mrs",
+      "firstName": "dsdf",
+      "lastName": "dfsd",
+      "altEmail": "dsfsd",
+      "mobileNumber": "dfsdf",
+      "email": "sdfs",
+      "password": "dfsdfs",
+      "password2": "fsdfs",
+      "marketingPref": "yes"
+    },
+    {
+      "id": "a4c84aa8-40e4-4955-8a07-07f193ebbc1c",
+      "title": "Mrs",
+      "firstName": "fgdg",
+      "lastName": "dfgd",
+      "altEmail": "nuwana24@gmail.com",
+      "mobileNumber": "0766863528",
+      "email": "nuwana24@gmail.com",
+      "password": "1234",
+      "password2": "1234",
+      "marketingPref": "no"
+    }
+  ]
+}

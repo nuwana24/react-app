@@ -3,6 +3,7 @@ import "../../css/contact-page.scss";
 import editIcon from "../../images/edit.png";
 import deleteIcon from "../../images/delete.png";
 import Modal from "../modal/modal";
+import api from "../../api/index";
 
 type Props = {
   contactHandler: (contact: object) => void;
@@ -12,6 +13,7 @@ type Props = {
   deleteHandler: (use: object) => void;
   formUpdate?: boolean;
   updateData?: any;
+  onUpdate: (e: React.FormEvent, data: any) => Promise<any>;
   closeHandler: () => void;
 };
 
@@ -19,14 +21,33 @@ const ContactList = (props: Props) => {
   const contactList = props.contactList;
   console.log(contactList);
   const [showPopup, setShowPopup] = useState(false);
+  const [selected, setSelected] = useState(null);
 
   // const closeHandler = () => {
   //   setShowPopup(false);
   // };
+  const handleOpen = (data: any) => {
+    setSelected(data);
+    setShowPopup(true);
+  };
+
   const handleClose = () => {
     // setSelected(null);
     setShowPopup(false);
-  }
+  };
+
+  const updateHandler = async (e: React.FormEvent, data: any) => {
+    e.preventDefault();
+
+    try {
+      props.onUpdate(e, data);
+
+      setShowPopup(false);
+      setSelected(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -54,7 +75,7 @@ const ContactList = (props: Props) => {
                   <td>
                     <button
                       className="transparent-button"
-                      onClick={() => setShowPopup(true)}
+                      onClick={() => handleOpen(item)}
                     >
                       <img src={editIcon} />
                     </button>
@@ -69,10 +90,14 @@ const ContactList = (props: Props) => {
               ))}
           </tbody>
         </table>
-        {showPopup && <Modal showPopup={showPopup}
-        handleClose={handleClose}
-
-        /> }
+        {showPopup && (
+          <Modal
+            selected={selected}
+            showPopup={showPopup}
+            handleClose={handleClose}
+            onUpdate={updateHandler}
+          />
+        )}
       </div>
       <div className="contact-table-responsive">
         {contactList.length > 0 &&

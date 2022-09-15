@@ -108,6 +108,23 @@ const ContactPage = (props: Props) => {
     setSelected(selected);
     setShow(true);
   };
+
+  const updateHandler = async (e: React.FormEvent, data: any) => {
+    e.preventDefault();
+
+    try {
+      const response = await api.put(`/contact/${data.id}`, data);
+      const res = await api.get("/contact");
+
+      setContactList(res.data);
+      setContacts(res.data);
+
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmitModal = () => setShow(!show);
   return (
     <>
@@ -121,7 +138,10 @@ const ContactPage = (props: Props) => {
           </div>
           <div className="page-description">
             <div className="page-description-left">
-              <h5>Manage team member roles for BT account and services - swiftly and easily</h5>
+              <h5>
+                Manage team member roles for BT account and services - swiftly
+                and easily
+              </h5>
             </div>
             <div className="page-description-add-button">
               <button onClick={navigateToForm}>Add Contact</button>
@@ -137,7 +157,6 @@ const ContactPage = (props: Props) => {
               >
                 Show toast
               </button>
-
             </div>
           </div>
         </div>
@@ -149,6 +168,7 @@ const ContactPage = (props: Props) => {
             contactHandler={contactHandler}
             closeHandler={closeHandler}
             contactupdateHandler={contactupdateHandler}
+            onUpdate={updateHandler}
           />
         ) : (
           ""
