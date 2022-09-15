@@ -45,6 +45,18 @@
       "password": "1234",
       "password2": "1234",
       "marketingPref": "no"
+    },
+    {
+      "id": "b55fd875-6dcf-4cdc-b1c9-482de84b02e4",
+      "title": "Mr",
+      "firstName": "Rahul",
+      "lastName": "Fernando",
+      "altEmail": "asdfghjk",
+      "mobileNumber": "123456789",
+      "email": "12345",
+      "password": "12345678",
+      "password2": "12345678",
+      "marketingPref": "yes"
     }
   ]
 }

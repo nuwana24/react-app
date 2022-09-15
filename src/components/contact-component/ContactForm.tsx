@@ -5,8 +5,7 @@ import api from "../../api/index";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/index";
 import { toast } from "../toast-notification/toast/ToastManager";
-import "../toast-notification/toast/Toast.scss"
-
+import "../toast-notification/toast/Toast.scss";
 
 type Props = {
   // contactHandler: (contact: object) => void;
@@ -78,24 +77,29 @@ const ContactForm = (props: Props) => {
   //     });
   //   return response;
   // };
-  toast.show({
-    id: "my-id",
-    title: "Onload toast title",
-    content: "Onload toast body",
-    duration: 5000,
-  });
 
-  const postData = (e: React.SyntheticEvent) =>{
+  const postData = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    axios.post("/contact", { id: uuidv4(), ...formData })
-    .then((res: any) => {
-      setContactList([...contactList, res.data]);
-      setContacts([...contactList, res.data]);
-      navigate('/', {replace: true});
-    }).catch((error: any) => {
-      console.log(error);
-    });
-  }
+    axios
+      .post("/contact", { id: uuidv4(), ...formData })
+      .then((res: any) => {
+        setContactList([...contactList, res.data]);
+        setContacts([...contactList, res.data]);
+        toast.show({
+          id: "added",
+          title: "Contact",
+          content: `${formData.firstName} ${formData.lastName} added successfully`,
+          duration: 3000,
+        });
+
+        setTimeout(() => {
+          navigate("/", { replace: true });
+        }, 3000);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -220,22 +224,25 @@ const ContactForm = (props: Props) => {
                 type="radio"
                 id="marketingPref"
                 name="marketingPref"
-                value={formData.marketingPref}
+                value="yes"
+                checked={!!(formData.marketingPref === "yes")}
                 onChange={onChangeHandler}
               />
               <label>Yes</label>
-
-              {/* <input
+            </div>
+            <div>
+              <input
                 type="radio"
                 id="marketingPref"
                 name="marketingPref"
-                value="No"
-                onChange={(e) => setMarketingPref(e.target.value )}
-              /> */}
+                value="no"
+                checked={!!(formData.marketingPref === "no")}
+                onChange={onChangeHandler}
+              />
               <label>No</label>
             </div>
             <div>
-            <button 
+              <button
                 onClick={() =>
                   toast.show({
                     title: "Toast title",
